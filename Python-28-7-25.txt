@@ -1,0 +1,73 @@
+-->C - Create a File (Write Initial Data)
+
+# Create a new file or overwrite if it exists
+
+with open("assignment.txt", "w") as file:
+    file.write("Line 1: Welcome to File Handling\n")
+    file.write("Line 2: This is Python CRUD\n")
+print("File created and data written successfully.")
+
+-->R - Read from the File
+
+# Read and display content
+with open("assignment.txt", "r") as file:
+    content = file.read()
+    print("File content:\n", content)
+
+-->U - Update a File(Append New Data)
+
+# Add content at the end of the file
+
+with open("assignment.txt", "a") as file:
+    file.write("Line 3: Appending new data\n")
+print("File updated successfully (data appended).")
+
+-->Modify Specific Content
+
+# Read lines
+with open("assignment.txt", "r") as file:
+    lines = file.readlines()
+
+# Update line 2
+lines[1] = "Line 2: This is UPDATED Python CRUD\n"
+
+# Overwrite file with updated lines
+with open("assignment.txt", "w") as file:
+    file.writelines(lines)
+print("Specific line updated successfully.")
+
+-->D - Delete the File
+
+import os
+
+if os.path.exists("assignment.txt"):
+    os.remove("assignment.txt")
+    print("File deleted successfully.")
+else:
+    print("File does not exist.")
+
+
+##Research on flush() and write() Methods
+
+-->write() Method-->Used to write data (as string) into a file.
+
+Syntax:file.write("your data")
+Returns:Number of characters written.
+
+Example:
+
+with open("example.txt", "w") as file:
+    file.write("Hello Mounika!")
+
+-->flush() Method-->Clears internal buffer and immediately writes data to the file on disk.
+
+Used when:You want to ensure data is saved immediately (e.g., logging, long processes).
+
+Syntax: file.flush()
+
+Example:
+
+with open("log.txt", "w") as file:
+    file.write("Writing important log...\n")
+    file.flush()  # ensures the above line is written immediately
+    print("Data flushed to file.")
